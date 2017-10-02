@@ -15,8 +15,8 @@ type Config struct {
 	Api  ApiConfig `api:"metadata"`
 }
 
-func ParseYaml() (*Config, error) {
-	filename, _ := filepath.Abs("../config.yml")
+func ParseYaml(configPath string) (*Config, error) {
+	filename, _ := filepath.Abs(configPath)
 	yamlFile, err := ioutil.ReadFile(filename)
 
 	if err != nil {

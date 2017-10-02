@@ -9,9 +9,9 @@ type App struct {
 }
 
 // Init struct
-func New() *App {
+func New(configPath string) *App {
 	engine := echo.New()
-	config, err := ParseYaml()
+	config, err := ParseYaml(configPath)
 	// Initialize the application
 	if err != nil {
 		panic(err)
