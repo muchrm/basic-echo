@@ -15,7 +15,7 @@ env:
     - COMMIT=${TRAVIS_COMMIT::8}
 after_success:
   - bash <(curl -s https://codecov.io/bash) -t $CODECOV_TOKEN
-  - CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build main.go
+  - make build
   - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
   - export REPO=muchrm/go-echo
   - export TAG=`if [ "$TRAVIS_BRANCH" == "master" ]; then echo "latest"; else echo $TRAVIS_BRANCH ; fi`
