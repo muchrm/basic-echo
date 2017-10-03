@@ -7,12 +7,12 @@ import (
 	yaml "gopkg.in/yaml.v2"
 )
 
-type ApiConfig struct {
+type APIConfig struct {
 	Prefix string `yaml:"prefix"`
 }
 type Config struct {
 	Port string    `yaml:"port"`
-	Api  ApiConfig `api:"metadata"`
+	API  APIConfig `api:"metadata"`
 }
 
 func ParseYaml(configPath string) (*Config, error) {

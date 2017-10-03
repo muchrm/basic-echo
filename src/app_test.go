@@ -10,7 +10,7 @@ import (
 )
 
 func TestNew(t *testing.T) {
-	confTest := &Config{Port: "3000", Api: ApiConfig{Prefix: "/api"}}
+	confTest := &Config{"3000", ApiConfig{Prefix: "/api"}}
 	appTest := &App{Engine: echo.New(), Config: confTest}
 	app := New("../config.yml")
 	if reflect.DeepEqual(appTest, confTest) {

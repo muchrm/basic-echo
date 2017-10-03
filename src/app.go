@@ -31,7 +31,7 @@ func New(configPath string) *App {
 		Config: config,
 	}
 	todoRepository := &repository.TodoRepository{}
-	handle.NewTodoHandle(todoRepository, app.Engine.Group(app.Config.Api.Prefix))
+	handle.NewTodoHandle(todoRepository, app.Engine.Group(app.Config.API.Prefix))
 	return app
 }
 
