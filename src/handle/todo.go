@@ -21,6 +21,7 @@ func (handle *TodoHandle) getTodo(c echo.Context) error {
 
 NewTodoHandle(todoRepository *repository.TodoRepository,group *echo.Group) *TodoHandle{
 	handle := TodoHandle{todoRepository,group}
+	handle.bind();
 	return &handle
 }
 

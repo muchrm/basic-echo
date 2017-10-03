@@ -29,16 +29,7 @@ func New(configPath string) *App {
 		Engine: engine,
 		Config: config,
 	}
-	handle.NewTodoHandle(
-		app.Engine.Group(
-			app.Config.Api.Prefix,
-		),
-	)
-	handle.NewStatsHandle(
-		app.Engine.Group(
-			app.Config.Api.Prefix,
-		),
-	)
+	handle.NewTodoHandle(app.Engine.Group(app.Config.Api.Prefix))
 	return app
 }
 
