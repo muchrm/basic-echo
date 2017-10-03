@@ -1,17 +1,20 @@
-package src
+package app
 
-import "github.com/labstack/echo"
+import (
+	"github.com/labstack/echo"
+	"github.com/muchrm/go-echo/src/config"
+)
 
 // App struct.
 type App struct {
 	Engine *echo.Echo
-	Config *Config
+	Config *config.Config
 }
 
 // Init struct
 func New(configPath string) *App {
 	engine := echo.New()
-	config, err := ParseYaml(configPath)
+	config, err := config.ParseYaml(configPath)
 	// Initialize the application
 	if err != nil {
 		panic(err)

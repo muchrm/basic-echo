@@ -1,8 +1,8 @@
 package main
 
-import "github.com/muchrm/go-echo/src"
+import "github.com/muchrm/go-echo/src/app"
 
 func main() {
-	app := src.New("./config.yml")
+	app := app.New("./config.yml")
 	app.Run()
 }
