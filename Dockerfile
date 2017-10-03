@@ -1,8 +1,8 @@
 FROM scratch
 
-WORKDIR /root
-ADD main /root
-ADD config.yml /root
+RUN mkdir /root
+COPY config.yml /root
+COPY main /root
 
-EXPOSE 3000
+WORKDIR /root
 CMD ["./main"]

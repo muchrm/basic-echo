@@ -1,3 +1,5 @@
+REPO = muchrm/go-echo
+COMMIT = latest
 dependency:
 	go get -u github.com/golang/dep/cmd/dep
 	dep ensure
@@ -7,6 +9,9 @@ build: ## Build the binary
 
 check: test lint vet ## Runs all tests
 
+docker:
+	docker build -f Dockerfile -t $REPO:$COMMIT .
+	
 lint: ## Lint all files
 	go list ./... | grep -v /vendor/ | xargs -L1 golint -set_exit_status
 
@@ -22,6 +27,8 @@ test: ## Run the  tests
 		go test -race -coverprofile=profile.out -covermode=atomic $$d || exit 1; \
 		[ -f profile.out ] && cat profile.out >> coverage.txt && rm profile.out; \
 	done
+
+
 
 help: ## Display this help message
 	@cat $(MAKEFILE_LIST) | grep -e "^[a-zA-Z_\-]*: *.*## *" | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
