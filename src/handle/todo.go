@@ -7,11 +7,20 @@ import (
 	"github.com/muchrm/go-echo/src/repository"
 )
 
-func NewTodoHandle(group *echo.Group) {
+type TodoHandle struct {
+	todoRepository *repository.TodoRepository
+	group          *echo.Group
+}
+func (handle *TodoHandle) bind() {
 	group.GET("/todos", getTodo)
 }
 
-func getTodo(c echo.Context) error {
-	r := repository.TodoRepository{}
-	return c.JSON(http.StatusOK, r.List())
+func (handle *TodoHandle) getTodo(c echo.Context) error {
+	return c.JSON(http.StatusOK, handle.todoRepository.List())
 }
+
+NewTodoHandle(todoRepository *repository.TodoRepository,group *echo.Group) *TodoHandle{
+	handle := TodoHandle{todoRepository,group}
+	return &handle
+}
+
