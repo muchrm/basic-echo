@@ -12,14 +12,14 @@ type TodoHandle struct {
 	group          *echo.Group
 }
 func (handle *TodoHandle) bind() {
-	group.GET("/todos", getTodo)
+	handle.group.GET("/todos", handle.getTodo)
 }
 
 func (handle *TodoHandle) getTodo(c echo.Context) error {
 	return c.JSON(http.StatusOK, handle.todoRepository.List())
 }
 
-NewTodoHandle(todoRepository *repository.TodoRepository,group *echo.Group) *TodoHandle{
+func NewTodoHandle(todoRepository *repository.TodoRepository,group *echo.Group) *TodoHandle{
 	handle := TodoHandle{todoRepository,group}
 	handle.bind();
 	return &handle

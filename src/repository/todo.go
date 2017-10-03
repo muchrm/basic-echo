@@ -9,7 +9,7 @@ import (
 type TodoRepository struct{}
 
 func (r *TodoRepository) List() domain.Todos {
-	return todo.Todos{
+	return domain.Todos{
 		domain.Todo{Name: "test", Completed: true, Due: time.Now()},
 		domain.Todo{Name: "test", Completed: true, Due: time.Now()},
 		domain.Todo{Name: "test", Completed: true, Due: time.Now()},

@@ -4,6 +4,7 @@ import (
 	"github.com/labstack/echo"
 	"github.com/labstack/echo/middleware"
 	"github.com/muchrm/go-echo/src/handle"
+	"github.com/muchrm/go-echo/src/repository"
 )
 
 // App struct.
@@ -29,7 +30,8 @@ func New(configPath string) *App {
 		Engine: engine,
 		Config: config,
 	}
-	handle.NewTodoHandle(app.Engine.Group(app.Config.Api.Prefix))
+	todoRepository := &repository.TodoRepository{}
+	handle.NewTodoHandle(todoRepository,app.Engine.Group(app.Config.Api.Prefix))
 	return app
 }
 
