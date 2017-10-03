@@ -13,7 +13,7 @@ type App struct {
 	Config *Config
 }
 
-// Init struct
+// New struct
 func New(configPath string) *App {
 	engine := echo.New()
 	config, err := ParseYaml(configPath)
@@ -31,7 +31,7 @@ func New(configPath string) *App {
 		Config: config,
 	}
 	todoRepository := &repository.TodoRepository{}
-	handle.NewTodoHandle(todoRepository,app.Engine.Group(app.Config.Api.Prefix))
+	handle.NewTodoHandle(todoRepository, app.Engine.Group(app.Config.Api.Prefix))
 	return app
 }
 
