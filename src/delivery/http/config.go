@@ -1,4 +1,4 @@
-package src
+package http
 
 import (
 	"io/ioutil"

@@ -1,10 +1,10 @@
-package src
+package http
 
 import (
 	"github.com/labstack/echo"
 	"github.com/labstack/echo/middleware"
-	"github.com/muchrm/go-echo/src/handle"
-	"github.com/muchrm/go-echo/src/repository"
+	"github.com/muchrm/go-echo/src/delivery/http/handle"
+	todoUsecase "github.com/muchrm/go-echo/src/usecase"
 )
 
 // App struct.
@@ -30,8 +30,8 @@ func New(configPath string) *App {
 		Engine: engine,
 		Config: config,
 	}
-	todoRepository := &repository.TodoRepository{}
-	handle.NewTodoHandle(todoRepository, app.Engine.Group(app.Config.Api.Prefix))
+	todoUsecase := &todoUsecase.TodoInterActor{}
+	handle.NewTodoHandle(todoUsecase, app.Engine.Group(app.Config.Api.Prefix))
 	return app
 }
 
