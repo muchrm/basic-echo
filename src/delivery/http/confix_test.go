@@ -1,4 +1,4 @@
-package src
+package http
 
 import (
 	"reflect"
@@ -8,8 +8,8 @@ import (
 )
 
 func TestParseYaml(t *testing.T) {
-	confTest := &Config{"3000", APIConfig{Prefix: "/api"}}
-	config, err := ParseYaml("../config.yml")
+	confTest := &Config{Port: "3000", Api: ApiConfig{Prefix: "/api"}}
+	config, err := ParseYaml("../../../config.yml")
 	assert.NoError(t, err)
 	if !reflect.DeepEqual(config, confTest) {
 		t.Errorf("TestParseYaml %v got %v", confTest, config)
