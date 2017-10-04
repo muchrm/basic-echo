@@ -33,7 +33,7 @@ func New(configPath string) *App {
 	}
 	todoRepository := demodb.NewTodo()
 	todoInteractor := todoUsecase.NewTodoInterActor(todoRepository)
-	handle.NewTodoHandle(todoInteractor, app.Engine.Group(app.Config.Api.Prefix))
+	handle.NewTodoHandle(todoInteractor, app.Engine.Group(app.Config.API.Prefix))
 	return app
 }
 
