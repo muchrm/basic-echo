@@ -1,5 +1,5 @@
-REPO = muchrm/go-echo
-COMMIT = latest
+repo = muchrm/go-echo
+commit = latest
 dependency:
 	go get -u github.com/golang/dep/cmd/dep
 	dep ensure
@@ -10,7 +10,7 @@ build: ## Build the binary
 check: test lint vet ## Runs all tests
 
 docker:
-	docker build -f Dockerfile -t $REPO:$COMMIT .
+	docker build -f Dockerfile -t $(repo):$(commit) .
 	
 lint: ## Lint all files
 	go list ./... | grep -v /vendor/ | xargs -L1 golint -set_exit_status

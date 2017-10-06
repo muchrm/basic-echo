@@ -1,8 +1,7 @@
 FROM scratch
 
-RUN mkdir /root
+WORKDIR /root
 COPY config.yml /root
 COPY main /root
 
-WORKDIR /root
 CMD ["./main"]
